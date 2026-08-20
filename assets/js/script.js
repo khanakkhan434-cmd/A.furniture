@@ -201,6 +201,142 @@ document.addEventListener("DOMContentLoaded", function(){
       "Interest: " + (data.get("interest") || ""),
       "Message: " + (data.get("message") || "")
     ].join("\\n");
-    window.open("https://wa.me/923001234567?text=" + encodeURIComponent(message), "_blank", "noopener");
+    window.open("https://wa.me/923172751352?text=" + encodeURIComponent(message), "_blank", "noopener");
+  });
+});
+
+
+/* E-commerce header search + local A.Furniture products + account/cart UI */
+document.addEventListener("DOMContentLoaded", function(){
+  const searchForms = Array.from(document.querySelectorAll(".header-search, .mobile-search-panel"));
+  const mobileToggle = document.querySelector(".mobile-search-toggle");
+  const mobilePanel = document.querySelector(".mobile-search-panel");
+  const productGrid = document.querySelector(".product-grid");
+
+  function escapeHtml(value){
+    return String(value || "").replace(/[&<>\"]/g, function(ch){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch];
+    });
+  }
+
+  function goToSearch(query){
+    const value=(query||"").trim();
+    if(!value) return;
+    const url=new URL(window.location.href);
+    if(url.pathname.endsWith("/index.html") || url.pathname.endsWith("/") || url.pathname === ""){
+      url.searchParams.set("search",value);
+      window.history.replaceState({},"",url);
+      applySearch(value,true);
+    }else{
+      window.location.href="index.html?search="+encodeURIComponent(value);
+    }
+    if(mobilePanel) mobilePanel.classList.remove("open");
+  }
+
+  function applySearch(query,scrollToProducts){
+    if(!productGrid) return;
+    const cards=Array.from(productGrid.querySelectorAll(".product-card"));
+    const q=(query||"").trim().toLowerCase();
+    let matches=0;
+    cards.forEach(function(card){
+      const text=card.textContent.toLowerCase();
+      const imageAlt=Array.from(card.querySelectorAll("img")).map(function(img){return img.alt||"";}).join(" ").toLowerCase();
+      const match=!q || (text+" "+imageAlt).includes(q);
+      card.style.display=match?"":"none";
+      if(match) matches++;
+    });
+
+    let status=document.querySelector(".search-results-status");
+    if(!status){
+      status=document.createElement("div");
+      status.className="search-results-status";
+      productGrid.parentNode.insertBefore(status,productGrid);
+    }
+
+    if(q){
+      status.innerHTML='<span>Search results for <b>"'+escapeHtml(q)+'"</b></span><button type="button" class="clear-search">Clear</button>';
+      status.style.display="flex";
+      const clear=status.querySelector(".clear-search");
+      if(clear) clear.addEventListener("click",function(){
+        const url=new URL(window.location.href);
+        url.searchParams.delete("search");
+        window.history.replaceState({},"",url);
+        applySearch("",false);
+        searchForms.forEach(function(form){
+          const input=form.querySelector(".search-input");
+          if(input) input.value="";
+        });
+      });
+      if(!matches){
+        status.insertAdjacentHTML("beforeend",'<em class="search-no-results">No matching A.Furniture product found.</em>');
+      }
+      if(scrollToProducts){
+        const section=document.querySelector(".products-section");
+        if(section) setTimeout(function(){section.scrollIntoView({behavior:"smooth",block:"start"});},50);
+      }
+    }else{
+      status.style.display="none";
+      cards.forEach(function(card){card.style.display="";});
+    }
+  }
+
+  searchForms.forEach(function(form){
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      const input=form.querySelector(".search-input");
+      goToSearch(input?input.value:"");
+    });
+    const input=form.querySelector(".search-input");
+    if(input && productGrid) input.addEventListener("input",function(){applySearch(input.value,false);});
+  });
+
+  if(mobileToggle && mobilePanel){
+    mobileToggle.addEventListener("click",function(){
+      const open=mobilePanel.classList.toggle("open");
+      mobileToggle.setAttribute("aria-expanded",open?"true":"false");
+      if(open){
+        const input=mobilePanel.querySelector(".search-input");
+        if(input) setTimeout(function(){input.focus();},50);
+      }
+    });
+  }
+
+  if(productGrid){
+    const params=new URLSearchParams(window.location.search);
+    const initialSearch=params.get("search")||"";
+    searchForms.forEach(function(form){
+      const input=form.querySelector(".search-input");
+      if(input) input.value=initialSearch;
+    });
+    applySearch(initialSearch,!!initialSearch);
+  }
+
+  // Keep the cart badge synced across all pages.
+  function getCart(){try{return JSON.parse(localStorage.getItem("AF_CART")||"[]");}catch(e){return [];}}
+  function updateCartCount(){
+    const count=getCart().reduce((sum,item)=>sum+(Number(item.quantity)||1),0);
+    document.querySelectorAll(".cart-count").forEach(function(el){el.textContent=count;el.style.display=count>0?"flex":"none";});
+  }
+  updateCartCount();
+  window.addEventListener("storage",updateCartCount);
+
+  // Buy Now keeps its existing checkout flow, while also remembering the selected item for Cart.
+  document.addEventListener("click",function(e){
+    const link=e.target.closest('a[href*="checkout.html"]');
+    if(!link) return;
+    const href=link.getAttribute("href")||"";
+    try{
+      const url=new URL(href,window.location.href);
+      const custom=url.searchParams.get("custom")==="1";
+      const id=url.searchParams.get("id")||"";
+      const name=url.searchParams.get("name")||id||"Furniture";
+      const image=url.searchParams.get("image")||"";
+      const item={id:custom?"custom-"+Date.now():id,name:custom?decodeURIComponent(name):name,image:custom?decodeURIComponent(image):image,price:0,quantity:1,customDesign:custom,checkoutUrl:url.pathname+url.search};
+      const cart=getCart();
+      const existing=cart.find(function(x){return x.id===item.id && x.customDesign===item.customDesign;});
+      if(existing) existing.quantity=(Number(existing.quantity)||1)+1; else cart.push(item);
+      localStorage.setItem("AF_CART",JSON.stringify(cart));
+      updateCartCount();
+    }catch(err){}
   });
 });

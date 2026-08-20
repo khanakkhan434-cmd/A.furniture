@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#121315">
+<link rel="icon" type="image/png" href="assets/images/af-furniture-logo-header.png"><link rel="stylesheet" href="assets/css/style.css"><title>Cart | A.Furniture</title>
+</head>
+<body>
+<div class="top-bar"><div>✦ High Quality Furniture, Crafted with Perfection</div><div class="top-note">Direct Factory • Custom Furniture • WhatsApp Orders</div></div>
+<header class="header">
+<button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="menu-lines" aria-hidden="true"></span></button><a class="logo" href="index.html" aria-label="A.Furniture Home"><img class="brand-logo brand-logo-header" src="assets/images/af-furniture-logo-header.png" alt="A.Furniture"></a>
+<nav class="nav"><a href="index.html#home">HOME</a><a href="index.html#products">PRODUCTS⌄</a><a href="about.html">ABOUT US</a><a href="index.html#why-us">WHY US</a><a href="index.html#gallery">GALLERY</a><a href="contact.html">CONTACT US</a></nav>
+<div class="header-actions" aria-label="Quick actions"><form class="header-search" role="search"><svg class="header-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg><input class="search-input" type="search" name="q" placeholder="Search furniture..." autocomplete="off" aria-label="Search furniture"></form><button class="header-icon mobile-search-toggle" type="button" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button><a class="header-icon account-button" href="login.html" aria-label="Account Login" title="Account / Login"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.2"></circle><path d="M5.5 20c.7-3.5 2.8-5.3 6.5-5.3s5.8 1.8 6.5 5.3"></path></svg></a><a class="header-icon cart-icon-mobile" href="cart.html" aria-label="Shopping Cart" title="Shopping Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 4h2l1.7 10.2h10.9l2-7.1H7"></path><circle cx="9.5" cy="19" r="1.4"></circle><circle cx="17.5" cy="19" r="1.4"></circle></svg><span class="cart-count">0</span></a></div>
+<form class="mobile-search-panel" role="search"><svg class="header-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg><input class="search-input" type="search" name="q" placeholder="Search furniture..." autocomplete="off" aria-label="Search furniture"></form>
+</header>
+<main class="cart-page"><section class="cart-card"><span class="eyebrow">SHOPPING CART</span><h1>Your Furniture Cart</h1><p>Items you select with Buy Now or a custom furniture reference are remembered here on this device.</p><div id="cartList" class="cart-list"></div><div id="cartActions" class="cart-actions"></div></section></main>
+<script src="assets/js/script.js"></script>
+<script>
+(function(){
+ const list=document.getElementById('cartList'),actions=document.getElementById('cartActions');
+ const prices={bed:45000,sofa:85000,dining:65000,wardrobe:55000};
+ const images={bed:'assets/images/bed.jpg',sofa:'assets/images/hero-sofa.jpg',dining:'assets/images/hero-sofa.jpg',wardrobe:'assets/images/wardrobe.jpg'};
+ function get(){try{return JSON.parse(localStorage.getItem('AF_CART')||'[]')}catch(e){return []}}
+ function save(v){localStorage.setItem('AF_CART',JSON.stringify(v));render()}
+ function render(){const cart=get(); if(!cart.length){list.innerHTML='<div class="cart-empty">Your cart is empty.<br><a class="btn btn-gold" href="index.html#products">Browse Furniture</a></div>';actions.innerHTML='';return}
+ list.innerHTML=cart.map((x,i)=>{const img=x.image||images[x.id]||'assets/images/hero-sofa.jpg';const price=x.customDesign?'Custom Quote':(prices[x.id]?'PKR '+prices[x.id].toLocaleString():'Custom Quote');return '<div class="cart-item"><img src="'+img+'" alt="'+(x.name||'Furniture')+'"><div><h3>'+x.name+'</h3><small>'+price+' • Qty '+(x.quantity||1)+'</small></div><button type="button" data-remove="'+i+'">Remove</button></div>'}).join('');
+ actions.innerHTML='<a class="btn btn-outline" href="index.html#products">Continue Shopping</a><a class="btn btn-gold" href="'+(cart[0].checkoutUrl||'checkout.html?id='+encodeURIComponent(cart[0].id||'bed'))+'">Proceed to Checkout</a>';
+ list.querySelectorAll('[data-remove]').forEach(btn=>btn.onclick=function(){const c=get();c.splice(Number(this.dataset.remove),1);save(c)});
+ }
+ render();
+})();
+</script>
+</body></html>

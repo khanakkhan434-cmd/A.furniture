@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#121315"><link rel="icon" type="image/png" href="assets/images/af-furniture-logo-header.png">
+<link rel="stylesheet" href="assets/css/style.css"><title>Login | A.Furniture</title>
+</head>
+<body>
+<div class="top-bar"><div>✦ High Quality Furniture, Crafted with Perfection</div><div class="top-note">Direct Factory • Custom Furniture • WhatsApp Orders</div></div>
+<header class="header">
+<button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="menu-lines" aria-hidden="true"></span></button>
+<a class="logo" href="index.html" aria-label="A.Furniture Home"><img class="brand-logo brand-logo-header" src="assets/images/af-furniture-logo-header.png" alt="A.Furniture"></a>
+<nav class="nav"><a href="index.html#home">HOME</a><a href="index.html#products">PRODUCTS⌄</a><a href="about.html">ABOUT US</a><a href="index.html#why-us">WHY US</a><a href="index.html#gallery">GALLERY</a><a href="contact.html">CONTACT US</a></nav>
+<div class="header-actions" aria-label="Quick actions">
+<form class="header-search" role="search"><svg class="header-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg><input class="search-input" type="search" name="q" placeholder="Search furniture..." autocomplete="off" aria-label="Search furniture"></form>
+<button class="header-icon mobile-search-toggle" type="button" aria-label="Search" title="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg></button>
+<a class="header-icon account-button" href="login.html" aria-label="Account Login" title="Account / Login"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.2"></circle><path d="M5.5 20c.7-3.5 2.8-5.3 6.5-5.3s5.8 1.8 6.5 5.3"></path></svg></a>
+<a class="header-icon cart-icon-mobile" href="cart.html" aria-label="Shopping Cart" title="Shopping Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 4h2l1.7 10.2h10.9l2-7.1H7"></path><circle cx="9.5" cy="19" r="1.4"></circle><circle cx="17.5" cy="19" r="1.4"></circle></svg><span class="cart-count">0</span></a>
+</div>
+<form class="mobile-search-panel" role="search"><svg class="header-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg><input class="search-input" type="search" name="q" placeholder="Search furniture..." autocomplete="off" aria-label="Search furniture"></form>
+</header>
+<main class="account-page"><section class="account-card"><span class="eyebrow">CUSTOMER ACCOUNT</span><h1>Login to A.Furniture</h1><p>Login page is ready. You can use it for customer account access; online account verification can be connected later.</p><form id="loginForm" class="account-form"><label>Email or Phone<input required name="identifier" type="text" placeholder="Enter email or phone"></label><label>Password<input required name="password" type="password" placeholder="Enter password"></label><button class="btn btn-gold" type="submit">Login</button></form><div id="loginMessage" class="account-message"></div></section></main>
+<script src="assets/js/script.js"></script>
+<script>
+document.getElementById('loginForm').addEventListener('submit',function(e){e.preventDefault();var id=this.identifier.value.trim();localStorage.setItem('AF_CUSTOMER_LOGIN',JSON.stringify({identifier:id,loggedIn:true}));var m=document.getElementById('loginMessage');m.textContent='Login details saved on this device. Full account authentication can be connected later.';m.style.display='block';this.reset();});
+</script>
+</body></html>

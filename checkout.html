@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A.Furniture secure online checkout and order page.">
+<link rel="icon" type="image/png" href="assets/images/af-furniture-logo-header.png">
+<title>Checkout | A.Furniture</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.checkout-form{display:grid!important;visibility:visible!important;opacity:1!important;height:auto!important;overflow:visible!important}.checkout-form>div{display:block!important;visibility:visible!important}.checkout-form label{color:#333!important;visibility:visible!important}.checkout-form input,.checkout-form select,.checkout-form textarea{display:block!important;visibility:visible!important;background:#fff!important;color:#222!important}.place-order{display:block!important;visibility:visible!important}.order-success{display:none}
+.order-error{display:none;margin-top:14px;padding:12px;border-radius:5px;background:#fff2f2;border:1px solid #f0caca;color:#8b2d2d;font-size:11px}.order-saving{display:none;margin-top:10px;font-size:10px;color:#777}.config-warning{display:none;margin:0 0 18px;padding:11px 13px;border:1px solid #ead7ad;background:#fff9ed;color:#70511d;border-radius:5px;font-size:10px;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="top-bar"><div>✦ High Quality Furniture, Crafted with Perfection</div><div class="top-note">Secure Online Ordering • A.Furniture</div></div>
+<header class="header">
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span class="menu-lines" aria-hidden="true"></span></button>
+    <a class="logo" href="index.html" aria-label="A.Furniture Home">
+      <img class="brand-logo brand-logo-header" src="assets/images/af-furniture-logo-header.png" alt="A.Furniture">
+    </a>
+    <nav class="nav">
+      <a href="index.html#home">HOME</a><a href="index.html#products">PRODUCTS</a><a href="about.html">ABOUT US</a><a href="index.html#why-us">WHY US</a><a href="index.html#gallery">GALLERY</a><a href="contact.html">CONTACT US</a>
+    </nav>
+    <div class="header-actions" aria-label="Quick actions">
+      <form class="header-search" role="search">
+        <svg class="header-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg>
+        <input class="search-input" type="search" name="q" placeholder="Search furniture..." autocomplete="off" aria-label="Search furniture">
+      </form>
+      <button class="header-icon mobile-search-toggle" type="button" aria-label="Search" title="Search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg>
+      </button>
+      <a class="header-icon account-button" href="login.html" aria-label="Account Login" title="Account / Login">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7.5" r="3.2"></circle><path d="M5.5 20c.7-3.5 2.8-5.3 6.5-5.3s5.8 1.8 6.5 5.3"></path></svg>
+      </a>
+      <a class="header-icon cart-icon-mobile" href="cart.html" aria-label="Shopping Cart" title="Shopping Cart">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 4h2l1.7 10.2h10.9l2-7.1H7"></path><circle cx="9.5" cy="19" r="1.4"></circle><circle cx="17.5" cy="19" r="1.4"></circle></svg>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+    <form class="mobile-search-panel" role="search">
+      <svg class="header-search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg>
+      <input class="search-input" type="search" name="q" placeholder="Search furniture..." autocomplete="off" aria-label="Search furniture">
+    </form>
+  </header>
+<main class="checkout-page">
+  <div class="checkout-wrap">
+    <section class="checkout-card">
+      <span class="eyebrow">CHECKOUT</span>
+      <h1>Complete Your Order</h1>
+      <p>Enter your details below. After you place the order, WhatsApp will open with your complete order message ready to send.</p>
+      
+      <form id="orderForm" class="checkout-form" novalidate>
+        <div><label for="name">Full Name *</label><input id="name" name="name" type="text" required placeholder="Your full name" autocomplete="name"></div>
+        <div><label for="phone">Phone Number *</label><input id="phone" name="phone" type="tel" required placeholder="03XX XXXXXXX" autocomplete="tel"></div>
+        <div class="full"><label for="address">Delivery Address *</label><input id="address" name="address" type="text" required placeholder="House, street, area" autocomplete="street-address"></div>
+        <div><label for="city">City *</label><input id="city" name="city" type="text" required placeholder="Karachi" autocomplete="address-level2"></div>
+        <div><label for="payment">Payment Method</label><select id="payment" name="payment"><option>Cash on Delivery / Confirmation</option><option>Bank Transfer</option><option>Payment on Delivery</option></select></div>
+        <div class="full"><label for="qty">Quantity</label><div class="qty-row"><div class="qty-control"><button type="button" id="minus" aria-label="Decrease quantity">−</button><input id="qty" name="quantity" value="1" inputmode="numeric" aria-label="Quantity"><button type="button" id="plus" aria-label="Increase quantity">+</button></div><span style="font-size:11px;color:#777">Adjust quantity before placing the order.</span></div></div>
+        <div class="full"><label for="notes">Order Notes</label><textarea id="notes" name="notes" placeholder="Color, size, fabric, customization or other requirements"></textarea></div>
+        <div class="full">
+          <button class="place-order" id="placeOrder" type="submit">Place Order</button>
+          <div class="order-saving" id="saving">Placing your order securely…</div>
+          <div class="checkout-note">Your Order ID will be generated and your complete order will open in WhatsApp. Press Send in WhatsApp to send it to A.Furniture.</div>
+          <div class="order-error" id="error" role="alert"></div>
+          <div class="order-success" id="success" role="status"><strong>Order Ready! ✓</strong><span>Your order details are ready in WhatsApp.</span><b>Order ID: <span id="orderId"></span></b><small>Thank you for choosing A.Furniture.</small></div>
+        </div>
+      </form>
+    </section>
+    <aside class="order-summary"><span class="eyebrow">ORDER SUMMARY</span><div class="summary-product"><img id="summaryImage" src="assets/images/bed.jpg" alt="Product"><div><h3 id="summaryName">Modern Wooden Bed</h3><span id="summaryPrice">PKR 45,000</span></div></div><div class="summary-line"><span>Quantity</span><strong id="summaryQty">1</strong></div><div class="summary-line"><span>Subtotal</span><strong id="subtotal">PKR 45,000</strong></div><div class="summary-line"><span>Delivery</span><strong>To be confirmed</strong></div><div class="summary-total"><span>Total</span><strong id="total">PKR 45,000</strong></div></aside>
+  </div>
+</main>
+<script>
+(function(){
+  const WHATSAPP_NUMBER='923172751352';
+  const products={
+    bed:{name:'Modern Wooden Bed',price:45000,image:'assets/images/bed.jpg'},
+    sofa:{name:'Luxury Sofa Set',price:85000,image:'assets/images/hero-sofa.jpg'},
+    dining:{name:'Wooden Dining Table',price:65000,image:'assets/images/hero-sofa.jpg'},
+    wardrobe:{name:'4 Door Wardrobe',price:55000,image:'assets/images/wardrobe.jpg'}
+  };
+  const params=new URLSearchParams(location.search);
+  const custom=params.get('custom')==='1';
+  const customName=params.get('name')||'Custom Furniture Design';
+  const customImage=params.get('image')||'';
+  const customSource=params.get('source')||'';
+  const id=params.get('id')||'bed';
+  const p=custom ? {name:customName,price:0,image:customImage||'assets/images/hero-sofa.jpg'} : (products[id]||products.bed);
+  const form=document.getElementById('orderForm'),qtyInput=document.getElementById('qty');
+  const warning=document.getElementById('configWarning'); if(warning) warning.style.display='none';
+  document.getElementById('summaryName').textContent=p.name;
+  document.getElementById('summaryPrice').textContent=custom?'Custom Quote':'PKR '+p.price.toLocaleString();
+  document.getElementById('summaryImage').src=p.image;
+  document.getElementById('summaryImage').alt=p.name;
+  if(custom){
+    const note=document.createElement('div');
+    note.className='custom-design-note';
+    note.textContent='Custom design reference: A.Furniture will review the selected design and confirm the final price before production.';
+    const card=document.querySelector('.checkout-card');
+    if(card) card.insertBefore(note,form);
+  }
+
+  function update(){
+    const n=Math.max(1,parseInt(qtyInput.value,10)||1); qtyInput.value=n;
+    const t=p.price*n;
+    document.getElementById('summaryQty').textContent=n;
+    document.getElementById('subtotal').textContent=custom?'To be confirmed':'PKR '+t.toLocaleString();
+    document.getElementById('total').textContent=custom?'To be confirmed':'PKR '+t.toLocaleString();
+  }
+  document.getElementById('minus').onclick=()=>{qtyInput.value=Math.max(1,(parseInt(qtyInput.value,10)||1)-1);update()};
+  document.getElementById('plus').onclick=()=>{qtyInput.value=(parseInt(qtyInput.value,10)||1)+1;update()};
+  qtyInput.oninput=update; update();
+
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const error=document.getElementById('error'); error.style.display='none';
+    if(!form.checkValidity()){form.reportValidity();return;}
+
+    const fd=new FormData(form);
+    const qty=Math.max(1,parseInt(fd.get('quantity'),10)||1);
+    const total=p.price*qty;
+    const orderId='AF-'+Date.now().toString().slice(-8);
+    const customer=String(fd.get('name')).trim();
+    const phone=String(fd.get('phone')).trim();
+    const address=String(fd.get('address')).trim();
+    const city=String(fd.get('city')).trim();
+    const payment=String(fd.get('payment')).trim();
+    const notes=String(fd.get('notes')||'').trim();
+
+    const message=[
+      '*A.Furniture — New Order*',
+      '',
+      '*Order ID:* '+orderId,
+      '*Product:* '+p.name,
+      '*Quantity:* '+qty,
+      '*Unit Price:* '+(custom?'Custom Quote':'PKR '+p.price.toLocaleString()),
+      '*Total:* '+(custom?'To be confirmed':'PKR '+total.toLocaleString()),
+      custom && customSource ? '*Reference Design:* '+decodeURIComponent(customSource) : '',
+      '',
+      '*Customer Details*',
+      'Name: '+customer,
+      'Phone: '+phone,
+      'Address: '+address,
+      'City: '+city,
+      'Payment: '+payment,
+      notes ? 'Notes: '+notes : ''
+    ].filter(Boolean).join('\n');
+
+    // Keep a local copy for the customer/order reference on this device.
+    const order={orderId,productId:id,customDesign:custom,product:p.name,quantity:qty,total,customer,phone,address,city,payment,notes,referenceUrl:customSource?decodeURIComponent(customSource):'',createdAt:new Date().toISOString()};
+    const orders=JSON.parse(localStorage.getItem('AF_ORDERS')||'[]'); orders.push(order); localStorage.setItem('AF_ORDERS',JSON.stringify(orders));
+
+    document.getElementById('orderId').textContent=orderId;
+    document.getElementById('success').style.display='grid';
+    document.getElementById('saving').style.display='none';
+    form.querySelectorAll('input,select,textarea,button').forEach(el=>el.disabled=true);
+
+    // WhatsApp opens with the complete order message. The customer must press Send.
+    const waUrl='https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(message);
+    window.open(waUrl,'_blank','noopener');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+
+  const mt=document.querySelector('.menu-toggle'),nav=document.querySelector('.nav');
+  if(mt&&nav) mt.onclick=()=>nav.classList.toggle('open');
+})();
+</script>
+
+</body>
+</html>
