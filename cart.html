@@ -19,8 +19,8 @@
  const list=document.getElementById('cartList'),actions=document.getElementById('cartActions');
  const prices={bed:45000,sofa:85000,dining:65000,wardrobe:55000};
  const images={bed:'assets/images/bed.jpg',sofa:'assets/images/hero-sofa.jpg',dining:'assets/images/hero-sofa.jpg',wardrobe:'assets/images/wardrobe.jpg'};
- function get(){try{return JSON.parse(localStorage.getItem('AF_CART')||'[]')}catch(e){return []}}
- function save(v){localStorage.setItem('AF_CART',JSON.stringify(v));render()}
+ function get(){try{return JSON.parse(localStorage.getItem('A.F_CART')||'[]')}catch(e){return []}}
+ function save(v){localStorage.setItem('A.F_CART',JSON.stringify(v));render()}
  function render(){const cart=get(); if(!cart.length){list.innerHTML='<div class="cart-empty">Your cart is empty.<br><a class="btn btn-gold" href="index.html#products">Browse Furniture</a></div>';actions.innerHTML='';return}
  list.innerHTML=cart.map((x,i)=>{const img=x.image||images[x.id]||'assets/images/hero-sofa.jpg';const price=x.customDesign?'Custom Quote':(prices[x.id]?'PKR '+prices[x.id].toLocaleString():'Custom Quote');return '<div class="cart-item"><img src="'+img+'" alt="'+(x.name||'Furniture')+'"><div><h3>'+x.name+'</h3><small>'+price+' • Qty '+(x.quantity||1)+'</small></div><button type="button" data-remove="'+i+'">Remove</button></div>'}).join('');
  actions.innerHTML='<a class="btn btn-outline" href="index.html#products">Continue Shopping</a><a class="btn btn-gold" href="'+(cart[0].checkoutUrl||'checkout.html?id='+encodeURIComponent(cart[0].id||'bed'))+'">Proceed to Checkout</a>';

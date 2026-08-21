@@ -22,6 +22,6 @@
 <main class="account-page"><section class="account-card"><span class="eyebrow">CUSTOMER ACCOUNT</span><h1>Login to A.Furniture</h1><p>Login page is ready. You can use it for customer account access; online account verification can be connected later.</p><form id="loginForm" class="account-form"><label>Email or Phone<input required name="identifier" type="text" placeholder="Enter email or phone"></label><label>Password<input required name="password" type="password" placeholder="Enter password"></label><button class="btn btn-gold" type="submit">Login</button></form><div id="loginMessage" class="account-message"></div></section></main>
 <script src="assets/js/script.js"></script>
 <script>
-document.getElementById('loginForm').addEventListener('submit',function(e){e.preventDefault();var id=this.identifier.value.trim();localStorage.setItem('AF_CUSTOMER_LOGIN',JSON.stringify({identifier:id,loggedIn:true}));var m=document.getElementById('loginMessage');m.textContent='Login details saved on this device. Full account authentication can be connected later.';m.style.display='block';this.reset();});
+document.getElementById('loginForm').addEventListener('submit',function(e){e.preventDefault();var id=this.identifier.value.trim();localStorage.setItem('A.F_CUSTOMER_LOGIN',JSON.stringify({identifier:id,loggedIn:true}));var m=document.getElementById('loginMessage');m.textContent='Login details saved on this device. Full account authentication can be connected later.';m.style.display='block';this.reset();});
 </script>
 </body></html>

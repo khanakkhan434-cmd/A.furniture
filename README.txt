@@ -18,9 +18,9 @@ Notes:
 
 ECOMMERCE ORDER FLOW
 - Buy Now opens checkout.html.
-- Place Order validates and saves the order in the customer browser localStorage under afurnitureOrders and shows an Order ID.
+- Place Order validates and saves the order in the customer browser localStorage under A.FurnitureOrders and shows an Order ID.
 - This static GitHub Pages version does not send orders to a server. A real shared admin/order WhatsApp requires a backend or hosted form/WhatsApp service.
-- WhatsApp contact buttons use 0317 2751352.
+- WhatsApp contact buttons use 0317 2351280.
 
 ONLINE E-COMMERCE ORDER SYSTEM
 - Checkout now saves real orders to WhatsApp order flow after one-time setup.
@@ -32,6 +32,6 @@ ONLINE E-COMMERCE ORDER SYSTEM
 
 Order flow:
 Buy Now -> Checkout -> Place Order -> WhatsApp opens with a pre-filled order message.
-Customer presses Send to deliver the order to A.Furniture WhatsApp (+92 317 2751352).
+Customer presses Send to deliver the order to A.Furniture WhatsApp (+92 317 2351280).
 
 Note: A static GitHub Pages site cannot send WhatsApp messages silently in the background. The customer must press Send in WhatsApp.

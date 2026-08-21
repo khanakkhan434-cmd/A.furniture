@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function(){
       "Interest: " + (data.get("interest") || ""),
       "Message: " + (data.get("message") || "")
     ].join("\\n");
-    window.open("https://wa.me/923172751352?text=" + encodeURIComponent(message), "_blank", "noopener");
+    window.open("https://wa.me/923172351280?text=" + encodeURIComponent(message), "_blank", "noopener");
   });
 });
 
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function(){
   }
 
   // Keep the cart badge synced across all pages.
-  function getCart(){try{return JSON.parse(localStorage.getItem("AF_CART")||"[]");}catch(e){return [];}}
+  function getCart(){try{return JSON.parse(localStorage.getItem("A.F_CART")||"[]");}catch(e){return [];}}
   function updateCartCount(){
     const count=getCart().reduce((sum,item)=>sum+(Number(item.quantity)||1),0);
     document.querySelectorAll(".cart-count").forEach(function(el){el.textContent=count;el.style.display=count>0?"flex":"none";});
@@ -331,11 +331,12 @@ document.addEventListener("DOMContentLoaded", function(){
       const id=url.searchParams.get("id")||"";
       const name=url.searchParams.get("name")||id||"Furniture";
       const image=url.searchParams.get("image")||"";
-      const item={id:custom?"custom-"+Date.now():id,name:custom?decodeURIComponent(name):name,image:custom?decodeURIComponent(image):image,price:0,quantity:1,customDesign:custom,checkoutUrl:url.pathname+url.search};
+      const productCodes={bed:"A.F-001",sofa:"A.F-002",dining:"A.F-003",wardrobe:"A.F-004"};
+      const item={id:custom?"custom-"+Date.now():id,productCode:custom?"CUSTOM":(productCodes[id]||""),name:custom?decodeURIComponent(name):name,image:custom?decodeURIComponent(image):image,price:0,quantity:1,customDesign:custom,checkoutUrl:url.pathname+url.search};
       const cart=getCart();
       const existing=cart.find(function(x){return x.id===item.id && x.customDesign===item.customDesign;});
       if(existing) existing.quantity=(Number(existing.quantity)||1)+1; else cart.push(item);
-      localStorage.setItem("AF_CART",JSON.stringify(cart));
+      localStorage.setItem("A.F_CART",JSON.stringify(cart));
       updateCartCount();
     }catch(err){}
   });

@@ -48,7 +48,7 @@
     <section class="checkout-card">
       <span class="eyebrow">CHECKOUT</span>
       <h1>Complete Your Order</h1>
-      <p>Enter your details below. After you place the order, WhatsApp will open with your complete order message ready to send.</p>
+      <p>Enter your details below. A.Fter you place the order, WhatsApp will open with your complete order message ready to send.</p>
       
       <form id="orderForm" class="checkout-form" novalidate>
         <div><label for="name">Full Name *</label><input id="name" name="name" type="text" required placeholder="Your full name" autocomplete="name"></div>
@@ -67,17 +67,17 @@
         </div>
       </form>
     </section>
-    <aside class="order-summary"><span class="eyebrow">ORDER SUMMARY</span><div class="summary-product"><img id="summaryImage" src="assets/images/bed.jpg" alt="Product"><div><h3 id="summaryName">Modern Wooden Bed</h3><span id="summaryPrice">PKR 45,000</span></div></div><div class="summary-line"><span>Quantity</span><strong id="summaryQty">1</strong></div><div class="summary-line"><span>Subtotal</span><strong id="subtotal">PKR 45,000</strong></div><div class="summary-line"><span>Delivery</span><strong>To be confirmed</strong></div><div class="summary-total"><span>Total</span><strong id="total">PKR 45,000</strong></div></aside>
+    <aside class="order-summary"><span class="eyebrow">ORDER SUMMARY</span><div class="summary-product"><img id="summaryImage" src="assets/images/bed.jpg" alt="Product"><div><h3 id="summaryName">Modern Wooden Bed</h3><span id="summaryPrice">PKR 45,000</span><small class="checkout-product-code" id="summaryCode">Product Code: A.F-001</small></div></div><div class="summary-line"><span>Quantity</span><strong id="summaryQty">1</strong></div><div class="summary-line"><span>Subtotal</span><strong id="subtotal">PKR 45,000</strong></div><div class="summary-line"><span>Delivery</span><strong>To be confirmed</strong></div><div class="summary-total"><span>Total</span><strong id="total">PKR 45,000</strong></div></aside>
   </div>
 </main>
 <script>
 (function(){
-  const WHATSAPP_NUMBER='923172751352';
+  const WHATSAPP_NUMBER='923172351280';
   const products={
-    bed:{name:'Modern Wooden Bed',price:45000,image:'assets/images/bed.jpg'},
-    sofa:{name:'Luxury Sofa Set',price:85000,image:'assets/images/hero-sofa.jpg'},
-    dining:{name:'Wooden Dining Table',price:65000,image:'assets/images/hero-sofa.jpg'},
-    wardrobe:{name:'4 Door Wardrobe',price:55000,image:'assets/images/wardrobe.jpg'}
+    bed:{name:'Modern Wooden Bed',code:'A.F-001',price:45000,image:'assets/images/bed.jpg'},
+    sofa:{name:'Luxury Sofa Set',code:'A.F-002',price:85000,image:'assets/images/hero-sofa.jpg'},
+    dining:{name:'Wooden Dining Table',code:'A.F-003',price:65000,image:'assets/images/hero-sofa.jpg'},
+    wardrobe:{name:'4 Door Wardrobe',code:'A.F-004',price:55000,image:'assets/images/wardrobe.jpg'}
   };
   const params=new URLSearchParams(location.search);
   const custom=params.get('custom')==='1';
@@ -85,11 +85,12 @@
   const customImage=params.get('image')||'';
   const customSource=params.get('source')||'';
   const id=params.get('id')||'bed';
-  const p=custom ? {name:customName,price:0,image:customImage||'assets/images/hero-sofa.jpg'} : (products[id]||products.bed);
+  const p=custom ? {name:customName,code:'CUSTOM',price:0,image:customImage||'assets/images/hero-sofa.jpg'} : (products[id]||products.bed);
   const form=document.getElementById('orderForm'),qtyInput=document.getElementById('qty');
   const warning=document.getElementById('configWarning'); if(warning) warning.style.display='none';
   document.getElementById('summaryName').textContent=p.name;
   document.getElementById('summaryPrice').textContent=custom?'Custom Quote':'PKR '+p.price.toLocaleString();
+  document.getElementById('summaryCode').textContent='Product Code: '+p.code;
   document.getElementById('summaryImage').src=p.image;
   document.getElementById('summaryImage').alt=p.name;
   if(custom){
@@ -119,7 +120,7 @@
     const fd=new FormData(form);
     const qty=Math.max(1,parseInt(fd.get('quantity'),10)||1);
     const total=p.price*qty;
-    const orderId='AF-'+Date.now().toString().slice(-8);
+    const orderId='A.F-'+Date.now().toString().slice(-8);
     const customer=String(fd.get('name')).trim();
     const phone=String(fd.get('phone')).trim();
     const address=String(fd.get('address')).trim();
@@ -132,6 +133,7 @@
       '',
       '*Order ID:* '+orderId,
       '*Product:* '+p.name,
+      '*Product Code:* '+p.code,
       '*Quantity:* '+qty,
       '*Unit Price:* '+(custom?'Custom Quote':'PKR '+p.price.toLocaleString()),
       '*Total:* '+(custom?'To be confirmed':'PKR '+total.toLocaleString()),
@@ -147,8 +149,8 @@
     ].filter(Boolean).join('\n');
 
     // Keep a local copy for the customer/order reference on this device.
-    const order={orderId,productId:id,customDesign:custom,product:p.name,quantity:qty,total,customer,phone,address,city,payment,notes,referenceUrl:customSource?decodeURIComponent(customSource):'',createdAt:new Date().toISOString()};
-    const orders=JSON.parse(localStorage.getItem('AF_ORDERS')||'[]'); orders.push(order); localStorage.setItem('AF_ORDERS',JSON.stringify(orders));
+    const order={orderId,productId:id,productCode:p.code,customDesign:custom,product:p.name,quantity:qty,total,customer,phone,address,city,payment,notes,referenceUrl:customSource?decodeURIComponent(customSource):'',createdAt:new Date().toISOString()};
+    const orders=JSON.parse(localStorage.getItem('A.F_ORDERS')||'[]'); orders.push(order); localStorage.setItem('A.F_ORDERS',JSON.stringify(orders));
 
     document.getElementById('orderId').textContent=orderId;
     document.getElementById('success').style.display='grid';

@@ -561,3 +561,10 @@ body{overflow-x:hidden}
   .header-icon{width:29px;flex-basis:29px}
   .menu-toggle{width:31px;flex-basis:31px}
 }
+
+/* Product codes */
+.product-code{display:block;font-size:11px;font-weight:700;color:#9a6c1e;margin:4px 0 2px;letter-spacing:.2px}
+.detail-product-code{display:inline-block;margin:8px 0 12px;padding:6px 10px;border:1px solid #e2d1b5;border-radius:999px;background:#fffaf2;color:#75531b;font-size:11px;font-weight:700}
+.checkout-product-code{display:block;margin-top:4px;font-size:11px;color:#9a6c1e;font-weight:700}
+
+.email-link{color:inherit;text-decoration:none}.email-link:hover{text-decoration:underline}
