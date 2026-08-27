@@ -96,7 +96,7 @@
         </div>
         <div class="detail-highlights"><span>✓ Factory Direct</span><span>✓ Custom Options</span><span>✓ Online Ordering</span></div>
         <a class="detail-buy" id="detailBuyNow" href="#">Buy Now</a>
-        <a class="detail-back" href="index.html#products">← Back to Products</a>
+        <a class="detail-back" id="detailBack" href="index.html#products">← Back to Products</a>
       </div>
     </div>
   <section class="related-products">
@@ -150,7 +150,22 @@
         name:"4 Door Wardrobe", code:"A.F-004", price:"PKR 55,000", image:"assets/images/wardrobe.jpg",
         desc:"A spacious four-door wardrobe with a practical layout and premium finishing. Internal arrangement and dimensions can be customized.",
         material:"Quality board / wood options", finish:"Custom color and finish", size:"Custom dimensions available"
-      }
+      },
+      office005: { name:'Compact Office Study Desk', code:'A.F-005', price:'Price on Request', image:'assets/images/office-01.jpg', desc:'A compact office study desk with practical shelving and a clean modern frame. Suitable for home offices and professional workspaces.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office006: { name:'Open Shelf Office Desk', code:'A.F-006', price:'Price on Request', image:'assets/images/office-02.jpg', desc:'A spacious office desk with open storage shelves for books, files and everyday work essentials.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office007: { name:'L-Shaped Office Desk with Drawers', code:'A.F-007', price:'Price on Request', image:'assets/images/office-03.jpg', desc:'An L-shaped office desk with integrated drawers, designed to provide generous workspace and organized storage.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office008: { name:'White Office Workstation with Shelves', code:'A.F-008', price:'Price on Request', image:'assets/images/office-04.jpg', desc:'A bright white workstation with overhead and lower shelving, ideal for an organized modern office.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office009: { name:'Modern Office Desk with Side Shelving', code:'A.F-009', price:'Price on Request', image:'assets/images/office-05.jpg', desc:'A modern office desk combining a spacious worktop with convenient side shelving for storage and display.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office010: { name:'Industrial Office Desk with Storage', code:'A.F-010', price:'Price on Request', image:'assets/images/office-06.jpg', desc:'An industrial-style office desk with open shelving and a strong frame, designed for practical daily work.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office011: { name:'Double Work Office Desk', code:'A.F-011', price:'Price on Request', image:'assets/images/office-07.jpg', desc:'A double workstation desk designed for shared workspaces, with storage shelving for books and office essentials.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office012: { name:'White Executive Work Desk', code:'A.F-012', price:'Price on Request', image:'assets/images/office-08.jpg', desc:'A clean white executive work desk with integrated storage, suitable for professional and home office environments.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office013: { name:'Minimal Black Office Desk', code:'A.F-013', price:'Price on Request', image:'assets/images/office-09.jpg', desc:'A minimal black office desk with a simple silhouette, ideal for focused workspaces and contemporary interiors.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office014: { name:'White Office Desk with Drawer Unit', code:'A.F-014', price:'Price on Request', image:'assets/images/office-10.jpg', desc:'A practical white office desk with a dedicated drawer unit for files and everyday stationery.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office015: { name:'Modern Executive Office Desk', code:'A.F-015', price:'Price on Request', image:'assets/images/office-11.jpg', desc:'A modern executive desk with a generous work surface and integrated storage for a polished professional setting.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office016: { name:'Premium Executive Office Desk', code:'A.F-016', price:'Price on Request', image:'assets/images/office-12.jpg', desc:'A premium executive office desk with a substantial profile and storage, designed for a refined office environment.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office017: { name:'Modern Office Workstation', code:'A.F-017', price:'Price on Request', image:'assets/images/office-13.jpg', desc:'A contemporary office workstation with practical storage and a clean layout for productive work.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office018: { name:'Manager Office Desk', code:'A.F-018', price:'Price on Request', image:'assets/images/office-14.jpg', desc:'A manager-style office desk with a professional presence and practical storage, suitable for executive rooms.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
+      office019: { name:'Contemporary Executive Workstation', code:'A.F-019', price:'Price on Request', image:'assets/images/office-15.jpg', desc:'A contemporary executive workstation with a broad work surface and meeting-friendly layout for professional offices.', material:'Quality wood / engineered wood options', finish:'Custom colors and finishes available', size:'Custom dimensions available', office:true },
     };
     const id = new URLSearchParams(location.search).get("id") || "bed";
     const p = products[id] || products.bed;
@@ -161,10 +176,21 @@
     document.getElementById("productPrice").textContent = p.price;
     document.getElementById("productCode").textContent = "Product Code: " + p.code;
     document.getElementById("productDescription").textContent = p.desc;
+    const detailBack = document.getElementById("detailBack");
+    if (p.office) detailBack.href = "office-furniture.html";
     document.getElementById("material").textContent = p.material;
     document.getElementById("finish").textContent = p.finish;
     document.getElementById("size").textContent = p.size || "Custom size available";
-    document.getElementById("detailBuyNow").href = "checkout.html?id=" + encodeURIComponent(id);
+    const detailBuyNow = document.getElementById("detailBuyNow");
+    if (p.office) {
+      const msg = "Assalamualaikum A.Furniture, I want a quotation for " + p.name + " (Product Code: " + p.code + "). Please share price and available customization options.";
+      detailBuyNow.textContent = "Request Price";
+      detailBuyNow.href = "https://wa.me/923172351280?text=" + encodeURIComponent(msg);
+      detailBuyNow.target = "_blank";
+      detailBuyNow.rel = "noopener";
+    } else {
+      detailBuyNow.href = "checkout.html?id=" + encodeURIComponent(id);
+    }
     const detailImage = document.getElementById("detailImage");
     detailImage.style.backgroundImage = "url('" + p.image + "')";
   </script>

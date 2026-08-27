@@ -568,3 +568,21 @@ body{overflow-x:hidden}
 .checkout-product-code{display:block;margin-top:4px;font-size:11px;color:#9a6c1e;font-weight:700}
 
 .email-link{color:inherit;text-decoration:none}.email-link:hover{text-decoration:underline}
+
+/* Custom furniture conversion section */
+.custom-furniture{background:#17191b;color:#fff;padding-top:72px;padding-bottom:72px}
+.custom-furniture-inner{max-width:1120px;margin:auto;display:grid;grid-template-columns:1.35fr .85fr;gap:42px;align-items:stretch}
+.custom-furniture-copy{padding:8px 0}
+.custom-furniture-copy h2{font-size:36px;line-height:1.12;margin:10px 0 13px;color:#fff;max-width:650px}
+.custom-furniture-copy p{max-width:650px;color:#c9c9c9;font-size:12px;line-height:1.85;margin-bottom:20px}
+.custom-points{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.custom-points span{font-size:9px;font-weight:700;padding:7px 10px;border:1px solid rgba(210,163,78,.35);border-radius:999px;color:#e8d5b3;background:rgba(210,163,78,.06)}
+.custom-actions{display:flex;flex-wrap:wrap;gap:10px}
+.custom-actions .btn{display:inline-flex;align-items:center;gap:7px}
+.custom-furniture-steps{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:18px;border:1px solid rgba(255,255,255,.09);border-radius:10px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));box-shadow:0 18px 45px rgba(0,0,0,.16)}
+.custom-step{display:flex;gap:14px;align-items:flex-start;padding:16px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+.custom-step:last-child{border-bottom:0}
+.custom-step>span{width:34px;height:34px;flex:0 0 34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(210,163,78,.12);border:1px solid rgba(210,163,78,.38);color:#d2a34e;font-size:10px;font-weight:800}
+.custom-step b{display:block;font-size:12px;margin:1px 0 5px}
+.custom-step small{display:block;color:#aeadab;font-size:9px;line-height:1.6}
+@media(max-width:800px){.custom-furniture{padding-top:52px;padding-bottom:52px}.custom-furniture-inner{grid-template-columns:1fr;gap:24px}.custom-furniture-copy h2{font-size:29px}.custom-furniture-steps{padding:10px}.custom-step{padding:14px 9px}}

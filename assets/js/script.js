@@ -118,6 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
 /* Category cards: stay in Products section instead of jumping to Home */
 document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".category-card").forEach(function(card){
+    // Cards with a real destination navigate normally; cards without one keep the old scroll behavior.
+    if (card.getAttribute("href")) return;
     card.addEventListener("click", function(e){
       e.preventDefault();
       const products = document.getElementById("products");
