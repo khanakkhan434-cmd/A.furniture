@@ -322,6 +322,18 @@ document.addEventListener("DOMContentLoaded", function(){
   updateCartCount();
   window.addEventListener("storage",updateCartCount);
 
+  // Living Room Price buttons open the product detail page only (never WhatsApp).
+  document.addEventListener("click", function(e){
+    const priceLink = e.target.closest(".product-buy");
+    if (!priceLink) return;
+    const href = priceLink.getAttribute("href") || "";
+    const productId = priceLink.getAttribute("data-product-id") || "";
+    if (productId || href.indexOf("product.html?id=") !== -1) {
+      e.preventDefault();
+      window.location.assign(productId ? ("product.html?id=" + encodeURIComponent(productId)) : href);
+    }
+  });
+
   // Buy Now keeps its existing checkout flow, while also remembering the selected item for Cart.
   document.addEventListener("click",function(e){
     const link=e.target.closest('a[href*="checkout.html"]');
