@@ -74,10 +74,45 @@
 (function(){
   const WHATSAPP_NUMBER='923172351280';
   const products={
-    bed:{name:'Modern Wooden Bed',code:'A.F-001',price:45000,image:'assets/images/bed.jpg'},
-    sofa:{name:'Luxury Sofa Set',code:'A.F-002',price:85000,image:'https://i5.walmartimages.com/seo/4-Piece-Wenona-Series-Living-Room-Set-with-a-Modern-Gray-Velvet-Coffee-Table_97ea19af-71c6-4c53-9ed3-233e4931420a.f574bdb97db5f282c8344b182f789af2.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640'},
-    dining:{name:'Wooden Dining Table',code:'A.F-003',price:65000,image:'assets/images/hero-sofa.jpg'},
-    wardrobe:{name:'4 Door Wardrobe',code:'A.F-004',price:55000,image:'assets/images/wardrobe.jpg'}
+    bed:{name:"Modern Wooden Bed",code:"A.F-001",price:45000,image:"assets/images/bed.jpg",quote:false},
+    sofa:{name:"Luxury Sofa Set",code:"A.F-002",price:85000,image:"https://i5.walmartimages.com/seo/4-Piece-Wenona-Series-Living-Room-Set-with-a-Modern-Gray-Velvet-Coffee-Table_97ea19af-71c6-4c53-9ed3-233e4931420a.f574bdb97db5f282c8344b182f789af2.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640",quote:false},
+    dining:{name:"Wooden Dining Table",code:"A.F-003",price:65000,image:"assets/images/hero-sofa.jpg",quote:false},
+    wardrobe:{name:"4 Door Wardrobe",code:"A.F-004",price:55000,image:"assets/images/wardrobe.jpg",quote:false},
+    office005:{name:"Compact Office Study Desk",code:"A.F-005",price:16000,image:"assets/images/office-01.jpg",quote:false},
+    office006:{name:"Open Shelf Office Desk",code:"A.F-006",price:16000,image:"assets/images/office-02.jpg",quote:false},
+    office007:{name:"L-Shaped Office Desk with Drawers",code:"A.F-007",price:24000,image:"assets/images/office-03.jpg",quote:false},
+    office008:{name:"White Office Workstation with Shelves",code:"A.F-008",price:16000,image:"assets/images/office-04.jpg",quote:false},
+    office009:{name:"Modern Office Desk with Side Shelving",code:"A.F-009",price:22000,image:"assets/images/office-05.jpg",quote:false},
+    office010:{name:"Industrial Office Desk with Storage",code:"A.F-010",price:16000,image:"assets/images/office-06.jpg",quote:false},
+    office011:{name:"Double Work Office Desk",code:"A.F-011",price:14000,image:"assets/images/office-07.jpg",quote:false},
+    office012:{name:"White Executive Work Desk",code:"A.F-012",price:24000,image:"assets/images/office-08.jpg",quote:false},
+    office013:{name:"Minimal Black Office Desk",code:"A.F-013",price:10000,image:"assets/images/office-09.jpg",quote:false},
+    office014:{name:"White Office Desk with Drawer Unit",code:"A.F-014",price:24000,image:"assets/images/office-10.jpg",quote:false},
+    office015:{name:"Modern Executive Office Desk",code:"A.F-015",price:16000,image:"assets/images/office-11.jpg",quote:false},
+    office016:{name:"Premium Executive Office Desk",code:"A.F-016",price:32000,image:"assets/images/office-12.jpg",quote:false},
+    office017:{name:"Modern Office Rage Side",code:"A.F-017",price:32000,image:"assets/images/office-13.jpg",quote:false},
+    office018:{name:"Manager Office Desk",code:"A.F-018",price:40000,image:"assets/images/office-14.jpg",quote:false},
+    office019:{name:"Office Rage Side",code:"A.F-019",price:32000,image:"assets/images/office-15.jpg",quote:false},
+    living020:{name:"Black Rectangular Coffee Table",code:"A.F-020",price:16000,image:"assets/images/living-01.jpg",quote:false},
+    living021:{name:"Console Table",code:"A.F-021",price:8000,image:"assets/images/living-02.jpg",quote:false},
+    living022:{name:"Round Side Table with Black Metal Frame",code:"A.F-022",price:0,image:"assets/images/living-02.jpg",quote:true},
+    living023:{name:"Modern Black/Brown Rectangular Coffee Table",code:"A.F-023",price:10000,image:"assets/images/living-03.jpg",quote:false},
+    living024:{name:"Wooden Coffee Table with Lower Shelf",code:"A.F-024",price:10000,image:"assets/images/living-04.jpg",quote:false},
+    living025:{name:"Coffee Table with Gold Frame",code:"A.F-025",price:16000,image:"assets/images/living-05.jpg",quote:false},
+    living026:{name:"Round Nesting Coffee Tables",code:"A.F-026",price:18000,image:"assets/images/living-06.jpg",quote:false},
+    living027:{name:"Black Marble Top Coffee Table Set",code:"A.F-027",price:24000,image:"assets/images/living-07.jpg",quote:false},
+    living028:{name:"Modern Living Room Coffee Table",code:"A.F-028",price:10000,image:"assets/images/living-03.jpg",quote:false},
+    living029:{name:"Wooden Living Room Coffee Table",code:"A.F-029",price:10000,image:"assets/images/living-04.jpg",quote:false},
+    living030:{name:"Modern Marble Top Coffee Table",code:"A.F-030",price:0,image:"assets/images/living-05.jpg",quote:true},
+    living031:{name:"Round Living Room Table Set",code:"A.F-031",price:0,image:"assets/images/living-06.jpg",quote:true},
+    chair032:{name:"Executive High-Back Chair with Footrest",code:"A.F-032",price:0,image:"assets/images/chairs/chair-source-01.jpeg",quote:true},
+    chair033:{name:"White Mesh Executive Chair",code:"A.F-033",price:0,image:"assets/images/chairs/chair-source-02.jpeg",quote:true},
+    chair034:{name:"Black Mesh Executive Chair",code:"A.F-034",price:0,image:"assets/images/chairs/chair-source-05.jpeg",quote:true},
+    chair035:{name:"Premium Brown Executive Chair",code:"A.F-035",price:0,image:"assets/images/chairs/chair-source-10.jpeg",quote:true},
+    chair036:{name:"White Ergonomic Office Chair",code:"A.F-036",price:0,image:"assets/images/chairs/chair-source-16.jpeg",quote:true},
+    chair037:{name:"High-Back Ergonomic Office Chair",code:"A.F-037",price:0,image:"assets/images/chairs/chair-source-09.jpeg",quote:true},
+    chair038:{name:"Brown Leather Executive Chair",code:"A.F-038",price:0,image:"assets/images/chairs/chair-source-21.jpeg",quote:true},
+    chair039:{name:"Black Mesh Visitor Chair",code:"A.F-039",price:0,image:"assets/images/chairs/chair-source-22.jpeg",quote:true}
   };
   const params=new URLSearchParams(location.search);
   const custom=params.get('custom')==='1';
@@ -89,7 +124,7 @@
   const form=document.getElementById('orderForm'),qtyInput=document.getElementById('qty');
   const warning=document.getElementById('configWarning'); if(warning) warning.style.display='none';
   document.getElementById('summaryName').textContent=p.name;
-  document.getElementById('summaryPrice').textContent=custom?'Custom Quote':'PKR '+p.price.toLocaleString();
+  document.getElementById('summaryPrice').textContent=custom?'Custom Quote':(p.quote?'Price':'PKR '+p.price.toLocaleString());
   document.getElementById('summaryCode').textContent='Product Code: '+p.code;
   document.getElementById('summaryImage').src=p.image;
   document.getElementById('summaryImage').alt=p.name;
@@ -105,8 +140,8 @@
     const n=Math.max(1,parseInt(qtyInput.value,10)||1); qtyInput.value=n;
     const t=p.price*n;
     document.getElementById('summaryQty').textContent=n;
-    document.getElementById('subtotal').textContent=custom?'To be confirmed':'PKR '+t.toLocaleString();
-    document.getElementById('total').textContent=custom?'To be confirmed':'PKR '+t.toLocaleString();
+    document.getElementById('subtotal').textContent=(custom||p.quote)?'To be confirmed':'PKR '+t.toLocaleString();
+    document.getElementById('total').textContent=(custom||p.quote)?'To be confirmed':'PKR '+t.toLocaleString();
   }
   document.getElementById('minus').onclick=()=>{qtyInput.value=Math.max(1,(parseInt(qtyInput.value,10)||1)-1);update()};
   document.getElementById('plus').onclick=()=>{qtyInput.value=(parseInt(qtyInput.value,10)||1)+1;update()};
@@ -135,8 +170,8 @@
       '*Product:* '+p.name,
       '*Product Code:* '+p.code,
       '*Quantity:* '+qty,
-      '*Unit Price:* '+(custom?'Custom Quote':'PKR '+p.price.toLocaleString()),
-      '*Total:* '+(custom?'To be confirmed':'PKR '+total.toLocaleString()),
+      '*Unit Price:* '+(custom?'Custom Quote':(p.quote?'Price':'PKR '+p.price.toLocaleString())),
+      '*Total:* '+((custom||p.quote)?'To be confirmed':'PKR '+total.toLocaleString()),
       custom && customSource ? '*Reference Design:* '+decodeURIComponent(customSource) : '',
       '',
       '*Customer Details*',

@@ -101,6 +101,7 @@
         <div class="detail-product-code" id="productCode">Product Code: A.F-001</div>
         <p id="productDescription">Product description.</p>
         <div class="detail-specs">
+          <div><span>Color</span><span id="color">All colors available</span></div>
           <div><span>Finish</span><span id="finish">Custom Finish Available</span></div>
           <div><span>Size</span><span id="size">Custom Size Available</span></div>
           <div><span>Customization</span><span id="custom">Available</span></div>
@@ -222,8 +223,13 @@
     const sizeEl = document.getElementById("size");
     const customEl = document.getElementById("custom");
     if (p.chair) {
-      if (specs) specs.style.display = "none";
+      if (specs) specs.style.display = "block";
       if (highlights) highlights.style.display = "none";
+      if (specs) {
+        specs.querySelectorAll("div").forEach((row, index) => {
+          row.style.display = index === 0 ? "flex" : "none";
+        });
+      }
     } else {
       if (specs) specs.style.display = "block";
       if (highlights) highlights.style.display = "flex";
