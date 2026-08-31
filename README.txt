@@ -35,3 +35,5 @@ Buy Now -> Checkout -> Place Order -> WhatsApp opens with a pre-filled order mes
 Customer presses Send to deliver the order to A.Furniture WhatsApp (+92 317 2351280).
 
 Note: A static GitHub Pages site cannot send WhatsApp messages silently in the background. The customer must press Send in WhatsApp.
+
+Visual duplicate fix: Living Room category uses living-03.jpg; Dining Room category uses hero-sofa.jpg; Best Sellers use different sofa/dining images.

@@ -115,7 +115,7 @@
       <div class="section-heading"><span class="eyebrow">EXPLORE MORE</span><h2>More From Our Collection</h2><i></i></div>
       <div class="related-grid">
         <a href="product.html?id=bed"><img src="assets/images/bed.jpg" alt="Modern wooden bed"><span>Modern Wooden Bed</span></a>
-        <a href="product.html?id=sofa"><img src="assets/images/hero-sofa.jpg" alt="Luxury sofa set"><span>Luxury Sofa Set</span></a>
+        <a href="product.html?id=living031"><img src="assets/images/living-06.jpg" alt="Round Living Room Table Set"><span>Round Living Room Table Set</span></a>
         <a href="product.html?id=wardrobe"><img src="assets/images/wardrobe.jpg" alt="Four door wardrobe"><span>4 Door Wardrobe</span></a>
       </div>
     </section>
@@ -149,7 +149,7 @@
         material:"Solid / engineered wood options", finish:"Multiple finishes available", size:"Custom size available"
       },
       sofa: {
-        name:"Luxury Sofa Set", code:"A.F-002", price:"PKR 85,000", image:"assets/images/hero-sofa.jpg",
+        name:"Luxury Sofa Set", code:"A.F-002", price:"PKR 85,000", image:"https://i5.walmartimages.com/seo/4-Piece-Wenona-Series-Living-Room-Set-with-a-Modern-Gray-Velvet-Coffee-Table_97ea19af-71c6-4c53-9ed3-233e4931420a.f574bdb97db5f282c8344b182f789af2.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640",
         desc:"A comfortable luxury sofa set crafted for modern living rooms. Upholstery, fabric, color and dimensions can be customized.",
         material:"Wood frame + premium upholstery", finish:"Fabric and color options", size:"Custom dimensions available"
       },
@@ -260,7 +260,7 @@
 
     function showImage(src, alt) {
       detailImageImg.style.display = "block";
-      detailImageImg.src = src.startsWith("assets/") ? src : "assets/" + src;
+      detailImageImg.src = /^(https?:)?\/\//i.test(src) ? src : (src.startsWith("assets/") ? src : "assets/" + src);
       detailImageImg.alt = alt || p.name;
     }
     showImage(p.image, p.name);

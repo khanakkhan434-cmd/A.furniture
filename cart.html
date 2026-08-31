@@ -18,7 +18,7 @@
 (function(){
  const list=document.getElementById('cartList'),actions=document.getElementById('cartActions');
  const prices={bed:45000,sofa:85000,dining:65000,wardrobe:55000};
- const images={bed:'assets/images/bed.jpg',sofa:'assets/images/hero-sofa.jpg',dining:'assets/images/hero-sofa.jpg',wardrobe:'assets/images/wardrobe.jpg'};
+ const images={bed:'assets/images/bed.jpg',sofa:'https://i5.walmartimages.com/seo/4-Piece-Wenona-Series-Living-Room-Set-with-a-Modern-Gray-Velvet-Coffee-Table_97ea19af-71c6-4c53-9ed3-233e4931420a.f574bdb97db5f282c8344b182f789af2.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640',dining:'assets/images/hero-sofa.jpg',wardrobe:'assets/images/wardrobe.jpg'};
  function get(){try{return JSON.parse(localStorage.getItem('A.F_CART')||'[]')}catch(e){return []}}
  function save(v){localStorage.setItem('A.F_CART',JSON.stringify(v));render()}
  function render(){const cart=get(); if(!cart.length){list.innerHTML='<div class="cart-empty">Your cart is empty.<br><a class="btn btn-gold" href="index.html#products">Browse Furniture</a></div>';actions.innerHTML='';return}
