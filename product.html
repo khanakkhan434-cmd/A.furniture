@@ -13,9 +13,10 @@
     .breadcrumb{font-size:11px;color:#777;margin-bottom:25px}
     .breadcrumb a{color:#916b28}
     .detail-wrap{max-width:1150px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:start}
-    .detail-image{height:500px;overflow:hidden;border-radius:7px;background-image:linear-gradient(135deg,rgba(255,255,255,.05),rgba(44,30,20,.45)),linear-gradient(135deg,#e5d5bd,#765337);display:flex;align-items:center;justify-content:center;color:#fff9;font-size:13px;letter-spacing:1px}
+    .detail-media{min-width:0}.detail-image{height:500px;overflow:hidden;border-radius:7px;background-image:linear-gradient(135deg,rgba(255,255,255,.05),rgba(44,30,20,.45)),linear-gradient(135deg,#e5d5bd,#765337);display:flex;align-items:center;justify-content:center;color:#fff9;font-size:13px;letter-spacing:1px;position:relative}
 
     .detail-image img{width:100%;height:100%;object-fit:contain;display:block;background:#fff;border-radius:7px}
+    .detail-gallery{display:none;gap:8px;margin-top:10px;flex-wrap:wrap}.detail-gallery button{width:70px;height:70px;padding:0;border:1px solid #e4ded4;border-radius:6px;background:#fff;overflow:hidden;cursor:pointer}.detail-gallery button.active{border-color:#9a6c1e}.detail-gallery img{width:100%;height:100%;object-fit:cover;display:block}.chair-slider-nav{display:none}.chair-slider-nav button{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;border:0;border-radius:50%;background:rgba(18,19,21,.72);color:#fff;font-size:24px;line-height:1;cursor:pointer;z-index:2}.chair-slider-nav .chair-prev{left:14px}.chair-slider-nav .chair-next{right:14px}.chair-slider-meta{display:none;align-items:center;justify-content:center;gap:10px;margin-top:12px}.chair-slider-dots{display:flex;gap:7px}.chair-slider-dots button{width:9px;height:9px;border:0;padding:0;border-radius:50%;background:#d5c8b6;cursor:pointer}.chair-slider-dots button.active{background:#9a6c1e}.chair-slider-count{font-size:11px;color:#777}
     .detail-copy .eyebrow{margin-top:10px}
     .detail-copy h1{font-size:42px;margin:5px 0 12px}
     .detail-price{font-size:22px;font-weight:700;color:#9a6c1e;margin:12px 0 20px}
@@ -82,7 +83,17 @@
   <main class="product-detail">
     <div class="breadcrumb"><a href="index.html">Home</a> &nbsp; / &nbsp; Products &nbsp; / &nbsp; <span id="crumb">Product</span></div>
     <div class="detail-wrap">
-      <div class="detail-image" id="detailImage" aria-label="Product image"><img id="detailImageImg" src="assets/images/bed.jpg" alt="Product image"></div>
+      <div class="detail-media">
+        <div class="detail-image" id="detailImage" aria-label="Product image">
+          <img id="detailImageImg" src="assets/images/bed.jpg" alt="Product image">
+          <div class="chair-slider-nav" id="chairSliderNav" aria-label="Chair image slider controls">
+            <button class="chair-prev" id="chairPrev" type="button" aria-label="Previous chair image">‹</button>
+            <button class="chair-next" id="chairNext" type="button" aria-label="Next chair image">›</button>
+          </div>
+        </div>
+        <div class="detail-gallery" id="detailGallery" aria-label="More product views"></div>
+        <div class="chair-slider-meta" id="chairSliderMeta"><div class="chair-slider-dots" id="chairSliderDots"></div><span class="chair-slider-count" id="chairSliderCount"></span></div>
+      </div>
       <div class="detail-copy">
         <span class="eyebrow">FURNITURE PRODUCT</span>
         <h1 id="productName">Product</h1>
@@ -123,7 +134,7 @@
         </div>
       </div>
       <div><h4>Quick Links</h4><a href="index.html#home">Home</a><a href="about.html">About Us</a><a href="index.html#products">Products</a><a href="index.html#gallery">Gallery</a><a href="index.html#why-us">Why Us</a><a href="#contact">Contact Us</a></div>
-      <div><h4>Categories</h4><a href="index.html#products">Bedroom Furniture</a><a href="index.html#products">Living Room Furniture</a><a href="index.html#products">Dining Room Furniture</a><a href="index.html#products">Office Furniture</a><a href="index.html#products">Custom Furniture</a></div>
+      <div><h4>Categories</h4><a href="index.html#products">Bedroom Furniture</a><a href="living-room-furniture.html">Living Room Furniture</a><a href="index.html#products">Dining Room Furniture</a><a href="office-furniture.html">Office Furniture</a><a href="chairs.html">Chairs</a><a href="index.html#products">Custom Furniture</a></div>
       <div><h4>Contact Us</h4><p>☎ +92 317 2351280</p><p>✉ <a class="email-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=ashfaqrehman22@gmail.com" target="_blank" rel="noopener">ashfaqrehman22@gmail.com</a></p><p>⌖ Your Factory Location, Pakistan</p><a class="footer-whatsapp" href="https://wa.me/923172351280" target="_blank" rel="noopener"><span class="wa-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12.03 0C5.45 0 .1 5.35.1 11.93c0 2.1.55 4.15 1.6 5.96L0 24l6.27-1.64a11.9 11.9 0 0 0 5.76 1.48h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.18-3.47-8.41ZM12.04 21.83h-.01a9.86 9.86 0 0 1-5.02-1.37l-.36-.21-3.72.97.99-3.62-.23-.37a9.84 9.84 0 0 1-1.51-5.29c0-5.44 4.43-9.87 9.87-9.87 2.64 0 5.12 1.03 6.98 2.89a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.43 9.88-9.88 9.88Zm5.42-7.4c-.3-.15-1.78-.88-2.05-.98-.28-.1-.48-.15-.69.15-.2.3-.79.98-.96 1.18-.18.2-.35.23-.65.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.74-1.64-2.03-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.53.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.08-.15-.69-1.66-.94-2.27-.25-.6-.5-.52-.69-.53h-.59c-.2 0-.53.08-.81.38-.28.3-1.06 1.04-1.06 2.54s1.09 2.95 1.24 3.15c.15.2 2.14 3.27 5.19 4.59.73.32 1.3.51 1.74.65.73.23 1.4.2 1.93.12.59-.09 1.78-.73 2.03-1.43.25-.7.25-1.3.18-1.43-.08-.12-.28-.2-.58-.35Z"/></svg></span> Chat on WhatsApp</a></div>
     </div>
     <div class="footer-bottom"><span>© 2026 A.Furniture Furniture Factory. All Rights Reserved.</span><span>Designed with ♥ for Quality Furniture</span></div>
@@ -152,33 +163,43 @@
         desc:"A spacious four-door wardrobe with a practical layout and premium finishing. Internal arrangement and dimensions can be customized.",
         material:"Quality board / wood options", finish:"Custom color and finish", size:"Custom dimensions available"
       },
-      office005: { name:'Compact Office Study Desk', code:'A.F-005', price:'PKR 16,000', image:'assets/images/office-01.jpg', desc:'A compact office study desk with practical shelving and a clean modern frame. Suitable for home offices and professional workspaces.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office006: { name:'Open Shelf Office Desk', code:'A.F-006', price:'PKR 16,000', image:'assets/images/office-02.jpg', desc:'A spacious office desk with open storage shelves for books, files and everyday work essentials.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office007: { name:'L-Shaped Office Desk with Drawers', code:'A.F-007', price:'PKR 24,000', image:'assets/images/office-03.jpg', desc:'An L-shaped office desk with integrated drawers, designed to provide generous workspace and organized storage.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office008: { name:'White Office Workstation with Shelves', code:'A.F-008', price:'PKR 16,000', image:'assets/images/office-04.jpg', desc:'A bright white workstation with overhead and lower shelving, ideal for an organized modern office.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office009: { name:'Modern Office Desk with Side Shelving', code:'A.F-009', price:'PKR 22,000', image:'assets/images/office-05.jpg', desc:'A modern office desk combining a spacious worktop with convenient side shelving for storage and display.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office010: { name:'Industrial Office Desk with Storage', code:'A.F-010', price:'PKR 16,000', image:'assets/images/office-06.jpg', desc:'An industrial-style office desk with open shelving and a strong frame, designed for practical daily work.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office011: { name:'Double Work Office Desk', code:'A.F-011', price:'PKR 14,000', image:'assets/images/office-07.jpg', desc:'A double workstation desk designed for shared workspaces, with storage shelving for books and office essentials.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office012: { name:'White Executive Work Desk', code:'A.F-012', price:'PKR 24,000', image:'assets/images/office-08.jpg', desc:'A clean white executive work desk with integrated storage, suitable for professional and home office environments.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office013: { name:'Minimal Black Office Desk', code:'A.F-013', price:'PKR 10,000', image:'assets/images/office-09.jpg', desc:'A minimal black office desk with a simple silhouette, ideal for focused workspaces and contemporary interiors.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office014: { name:'White Office Desk with Drawer Unit', code:'A.F-014', price:'PKR 24,000', image:'assets/images/office-10.jpg', desc:'A practical white office desk with a dedicated drawer unit for files and everyday stationery.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office015: { name:'Modern Executive Office Desk', code:'A.F-015', price:'PKR 16,000', image:'assets/images/office-11.jpg', desc:'A modern executive desk with a generous work surface and integrated storage for a polished professional setting.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office016: { name:'Premium Executive Office Desk', code:'A.F-016', price:'PKR 32,000', image:'assets/images/office-12.jpg', desc:'A premium executive office desk with a substantial profile and storage, designed for a refined office environment.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
-      office017: { name:'Modern Office Rage Side', code:'A.F-017', price:'PKR 32,000', image:'assets/images/office-13.jpg', desc:'A contemporary office workstation with practical storage and a clean layout for productive work.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
-      office018: { name:'Manager Office Desk', code:'A.F-018', price:'PKR 40,000', image:'assets/images/office-14.jpg', desc:'A manager-style office desk with a professional presence and practical storage, suitable for executive rooms.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
-      office019: { name:'Office Rage Side', code:'A.F-019', price:'PKR 32,000', image:'assets/images/office-15.jpg', desc:'A contemporary executive workstation with a broad work surface and meeting-friendly layout for professional offices.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
-      living020: { name:'Black Rectangular Coffee Table', code:'A.F-020', price:'PKR 16,000', image:'assets/images/living-01.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
-      living021: { name:'Console Table', code:'A.F-021', price:'PKR 8,000', image:'assets/images/living-02.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 36 in × Length: 24 in × Depth: 12 in', living:true },
-      living022: { name:'Round Side Table with Black Metal Frame', code:'A.F-022', price:'Price', image:'assets/images/living-02.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
-      living023: { name:'Modern Black/Brown Rectangular Coffee Table', code:'A.F-023', price:'PKR 10,000', image:'assets/images/living-03.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
-      living024: { name:'Wooden Coffee Table with Lower Shelf', code:'A.F-024', price:'PKR 10,000', image:'assets/images/living-04.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
-      living025: { name:'Coffee Table with Gold Frame', code:'A.F-025', price:'PKR 16,000', image:'assets/images/living-05.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 18 in × Length: 36 in × Depth: 36 in', living:true },
-      living026: { name:'Round Nesting Coffee Tables', code:'A.F-026', price:'PKR 18,000', image:'assets/images/living-06.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 18 in × Length: 36 in × Depth: 36 in', living:true },
-      living027: { name:'Black Marble Top Coffee Table Set', code:'A.F-027', price:'PKR 24,000', image:'assets/images/living-07.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 18 in × Length: 36 in × Depth: 36 in', living:true },
-      living028: { name:'Modern Living Room Coffee Table', code:'A.F-028', price:'PKR 10,000', image:'assets/images/living-03.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
-      living029: { name:'Wooden Living Room Coffee Table', code:'A.F-029', price:'PKR 10,000', image:'assets/images/living-04.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
-      living030: { name:'Modern Marble Top Coffee Table', code:'A.F-030', price:'Price', image:'assets/images/living-05.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
-      living031: { name:'Round Living Room Table Set', code:'A.F-031', price:'Price', image:'assets/images/living-06.jpg', desc:'Living room furniture product by A.Furniture. Detailed material, dimensions, customization and pricing will be added later.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', living:true },
+      office005: { name:'Compact Office Study Desk', code:'A.F-005', price:'PKR 16,000', image:'assets/images/office-01.jpg', desc:'A compact and practical office desk designed for focused work, study and everyday computer use. Its sturdy metal frame provides dependable support, while the laminated top offers a smooth, durable work surface. The clean design fits easily into home offices, study rooms and professional workspaces.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office006: { name:'Open Shelf Office Desk', code:'A.F-006', price:'PKR 16,000', image:'assets/images/office-02.jpg', desc:'A spacious open-shelf office desk that keeps books, files and work essentials organized within easy reach. The strong metal frame gives the desk a stable structure, while the laminated top provides a durable and easy-to-clean surface. Ideal for productive office and study setups.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office007: { name:'L-Shaped Office Desk with Drawers', code:'A.F-007', price:'PKR 24,000', image:'assets/images/office-03.jpg', desc:'An L-shaped office desk created for users who need generous workspace with convenient storage. The sturdy metal frame supports a durable laminated top for comfortable daily work and study. Its practical layout helps keep documents, stationery and equipment neatly arranged.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office008: { name:'White Office Workstation with Shelves', code:'A.F-008', price:'PKR 16,000', image:'assets/images/office-04.jpg', desc:'A modern workstation with useful shelving for books, files, décor and everyday office accessories. The metal frame provides strength and stability, while the laminated top delivers a smooth surface for writing and computer work. A smart choice for organized home offices and study areas.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office009: { name:'Modern Office Desk with Side Shelving', code:'A.F-009', price:'PKR 22,000', image:'assets/images/office-05.jpg', desc:'A modern office desk combining a spacious work area with practical side shelving for storage and display. Its metal frame is built for everyday durability, while the laminated top gives a clean and easy-to-maintain finish. Suitable for professional offices, home workspaces and study rooms.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office010: { name:'Industrial Office Desk with Storage', code:'A.F-010', price:'PKR 16,000', image:'assets/images/office-06.jpg', desc:'An industrial-inspired office desk designed for practical daily work with convenient open storage. The durable metal frame creates a strong foundation, while the laminated top provides a reliable surface for computers, documents and stationery. Its simple structure works well in modern office and study environments.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office011: { name:'Double Work Office Desk', code:'A.F-011', price:'PKR 14,000', image:'assets/images/office-07.jpg', desc:'A functional double workstation designed for shared office or study use, giving two users a practical working arrangement. The sturdy metal frame supports a durable laminated top for everyday use. Its clean design makes it suitable for offices, training areas and collaborative workspaces.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office012: { name:'White Executive Work Desk', code:'A.F-012', price:'PKR 24,000', image:'assets/images/office-08.jpg', desc:'A clean and professional white office desk designed to create an organized working environment. The strong metal frame provides stability, while the laminated top offers a smooth surface for computers, paperwork and daily tasks. Its storage-focused design suits executive offices, home offices and study spaces.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office013: { name:'Minimal Black Office Desk', code:'A.F-013', price:'PKR 10,000', image:'assets/images/office-09.jpg', desc:'A minimal black office desk with a straightforward design for focused work and study. Its metal frame provides dependable strength, while the laminated top gives a durable surface that is easy to maintain. The simple silhouette works especially well in compact modern offices and home study areas.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office014: { name:'White Office Desk with Drawer Unit', code:'A.F-014', price:'PKR 24,000', image:'assets/images/office-10.jpg', desc:'A practical office desk with an integrated drawer unit for keeping stationery, files and everyday essentials organized. The sturdy metal frame supports a durable laminated top designed for regular office and study use. Its clean appearance makes it easy to pair with modern workspace interiors.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office015: { name:'Modern Executive Office Desk', code:'A.F-015', price:'PKR 16,000', image:'assets/images/office-11.jpg', desc:'A modern executive-style office desk offering a generous work surface with useful integrated storage. The metal frame provides reliable support, while the laminated top delivers a smooth and durable finish for daily professional use. A balanced choice for offices, management rooms and home workspaces.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office016: { name:'Premium Executive Office Desk', code:'A.F-016', price:'PKR 32,000', image:'assets/images/office-12.jpg', desc:'A premium executive office desk designed to give a workspace a strong and professional presence. Its robust metal frame supports a durable laminated top with plenty of room for computers, documents and meetings. The refined design is well suited to executive offices and high-use professional environments.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 48 in × Depth: 24 in', custom:'Available', office:true },
+      office017: { name:'Modern Office Rage Side', code:'A.F-017', price:'PKR 32,000', image:'assets/images/office-13.jpg', desc:'A modern office range-side workstation designed for spacious professional work areas and organized daily use. The sturdy metal frame provides dependable support, while the laminated top creates a durable surface for work and meetings. Its larger proportions make it suitable for executive and managerial office settings.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
+      office018: { name:'Manager Office Desk', code:'A.F-018', price:'PKR 40,000', image:'assets/images/office-14.jpg', desc:'A professional manager-style office desk designed for executive rooms where workspace and presentation both matter. The strong metal frame supports a durable laminated top for computers, documents and meetings. Its broad proportions and clean finish create a confident, practical look for modern offices.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
+      office019: { name:'Office Rage Side', code:'A.F-019', price:'PKR 32,000', image:'assets/images/office-15.jpg', desc:'A spacious office range-side workstation designed for professional offices, management areas and meeting-friendly setups. Its sturdy metal frame provides strength and stability, while the laminated top offers a durable surface for everyday work. The larger size gives users comfortable room for equipment, paperwork and meetings.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
+      living020: { name:'Black Rectangular Coffee Table', code:'A.F-020', price:'PKR 16,000', image:'assets/images/living-01.jpg', desc:'A modern rectangular coffee table designed for a clean and practical living room setup. It features a sturdy metal frame with a durable laminated top for everyday use. The simple black finish gives it a contemporary look while keeping the design easy to style with different interiors.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living021: { name:'Console Table', code:'A.F-021', price:'PKR 8,000', image:'assets/images/living-02.jpg', desc:'A compact console table made for entryways, living rooms and small display areas. The design combines a strong metal frame with a laminated top and lower shelf for useful storage. Its slim proportions make it practical without taking up unnecessary space.', size:'Height: 36 in × Length: 24 in × Depth: 12 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living022: { name:'Round Side Table with Black Metal Frame', code:'A.F-022', price:'Price', image:'assets/images/living-02.jpg', desc:'A versatile round side table with a modern silhouette suited to sofas, lounge chairs and compact living spaces. It is built with a metal frame and a laminated top for a balanced combination of strength and easy maintenance. The clean profile gives the table a neat contemporary appearance.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living023: { name:'Modern Black/Brown Rectangular Coffee Table', code:'A.F-023', price:'PKR 10,000', image:'assets/images/living-03.jpg', desc:'A modern rectangular coffee table combining a warm brown laminated top with a strong metal base. The two-tone design adds contrast while keeping the overall shape simple and functional. It is a practical centerpiece for contemporary living rooms and everyday use.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living024: { name:'Wooden Coffee Table with Lower Shelf', code:'A.F-024', price:'PKR 10,000', image:'assets/images/living-04.jpg', desc:'A practical wooden-look coffee table designed with a spacious lower shelf for books, décor and everyday items. It combines a durable metal frame with a laminated top and matching lower shelf for a coordinated look. The open storage design keeps the living area useful and organized.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living025: { name:'Coffee Table with Gold Frame', code:'A.F-025', price:'PKR 16,000', image:'assets/images/living-05.jpg', desc:'A stylish round coffee table designed to add a refined touch to modern living rooms. It features a metal frame with a laminated top and a distinctive gold-tone finish for a premium appearance. The compact round shape works well beside sofas and in conversational seating areas.', size:'Height: 18 in × Length: 36 in × Depth: 36 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living026: { name:'Round Nesting Coffee Tables', code:'A.F-026', price:'PKR 18,000', image:'assets/images/living-06.jpg', desc:'A modern nesting coffee table set with two coordinated round tables that can be arranged together or separately. Each table combines a sturdy metal frame with a laminated top for durability and easy care. The nesting design gives you flexible surface space while keeping the room visually light.', size:'Height: 18 in × Length: 36 in × Depth: 36 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living027: { name:'Black Marble Top Coffee Table Set', code:'A.F-027', price:'PKR 24,000', image:'assets/images/living-07.jpg', desc:'A contemporary coffee table set featuring a dark marble-look laminated top and a decorative metal base. The layered round-table design creates an elegant focal point while providing useful surface space. Its modern finish is well suited to premium and contemporary living room interiors.', size:'Height: 18 in × Length: 36 in × Depth: 36 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living028: { name:'Modern Living Room Coffee Table', code:'A.F-028', price:'PKR 10,000', image:'assets/images/living-03.jpg', desc:'A clean modern coffee table created for everyday living room use and easy styling. The table uses a durable metal frame with a laminated top, giving it a practical construction and contemporary appearance. Its straightforward design works well with both modern and minimal interiors.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living029: { name:'Wooden Living Room Coffee Table', code:'A.F-029', price:'PKR 10,000', image:'assets/images/living-04.jpg', desc:'A warm wood-look coffee table designed to bring a simple and functional character to the living room. It features a strong metal frame with a laminated top for durability and easy maintenance. The clean rectangular profile provides a useful surface for décor, books and everyday items.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living030: { name:'Modern Marble Top Coffee Table', code:'A.F-030', price:'Price', image:'assets/images/living-05.jpg', desc:'A modern statement coffee table with a marble-look laminated top and a sturdy metal frame. The clean surface and contemporary base make it suitable for both decorative styling and everyday use. Its balanced proportions give the living room a polished and modern feel.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+      living031: { name:'Round Living Room Table Set', code:'A.F-031', price:'Price', image:'assets/images/living-06.jpg', desc:'A flexible round table set designed to create a stylish and practical living room arrangement. The tables feature durable metal frames with laminated tops for a clean finish and everyday reliability. They can be grouped together or positioned separately around sofas and lounge seating.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
+
+      chair032: { name:'Executive High-Back Chair with Footrest', code:'A.F-032', price:'Price', image:'assets/images/chairs/chair-source-01.jpeg', gallery:['assets/images/chairs/chair-source-01.jpeg','assets/images/chairs/chair-source-04.jpeg'], desc:'A premium high-back executive chair built for long office hours, focused desk work and comfortable study sessions. The supportive back, cushioned seat and integrated footrest help create a relaxed working position during extended use. A strong choice for executive offices, home workstations and dedicated study rooms where comfort and a professional look are equally important.', chair:true },
+      chair033: { name:'White Mesh Executive Chair', code:'A.F-033', price:'Price', image:'assets/images/chairs/chair-source-02.jpeg', gallery:['assets/images/chairs/chair-source-02.jpeg','assets/images/chairs/chair-source-03.jpeg','assets/images/chairs/chair-source-06.jpeg','assets/images/chairs/chair-source-07.jpeg','assets/images/chairs/chair-source-08.jpeg'], desc:'A modern mesh executive chair designed for comfortable daily office work, study sessions and computer use. The breathable mesh back helps improve airflow while the supportive seating profile suits long hours at a desk. Its clean white-and-black design works especially well in modern offices, home workspaces and student study setups.', chair:true },
+      chair034: { name:'Black Mesh Executive Chair', code:'A.F-034', price:'Price', image:'assets/images/chairs/chair-source-05.jpeg', gallery:['assets/images/chairs/chair-source-05.jpeg','assets/images/chairs/chair-source-11.jpeg','assets/images/chairs/chair-source-15.jpeg','assets/images/chairs/chair-source-23.jpeg','assets/images/chairs/chair-source-24.jpeg'], desc:'A professional black mesh executive chair made for everyday office use, focused study and workstation seating. The high-back design provides supportive seating while the breathable mesh helps keep long working sessions more comfortable. Its practical all-black appearance fits corporate offices, home offices, study rooms and shared work areas.', chair:true },
+      chair035: { name:'Premium Brown Executive Chair', code:'A.F-035', price:'Price', image:'assets/images/chairs/chair-source-10.jpeg', gallery:['assets/images/chairs/chair-source-10.jpeg','assets/images/chairs/chair-source-12.jpeg','assets/images/chairs/chair-source-13.jpeg','assets/images/chairs/chair-source-14.jpeg','assets/images/chairs/chair-source-19.jpeg','assets/images/chairs/chair-source-26.jpeg'], desc:'A premium brown executive chair with generous cushioning and a classic professional appearance. The broad back and comfortable seating profile make it suitable for manager cabins, executive desks, home offices and long study or reading sessions. It is an excellent option for customers who want office comfort with a more refined and distinguished look.', chair:true },
+      chair036: { name:'White Ergonomic Office Chair', code:'A.F-036', price:'Price', image:'assets/images/chairs/chair-source-16.jpeg', gallery:['assets/images/chairs/chair-source-16.jpeg','assets/images/chairs/chair-source-17.jpeg','assets/images/chairs/chair-source-18.jpeg','assets/images/chairs/chair-source-25.jpeg'], desc:'A lightweight ergonomic office chair designed for daily desk work, computer use and productive study sessions. The ventilated back supports airflow while the contemporary frame keeps the chair comfortable and visually clean. Its modern white finish makes it a strong option for home offices, student rooms, workstations and compact professional spaces.', chair:true },
+      chair037: { name:'High-Back Ergonomic Office Chair', code:'A.F-037', price:'Price', image:'assets/images/chairs/chair-source-09.jpeg', gallery:['assets/images/chairs/chair-source-09.jpeg','assets/images/chairs/chair-source-20.jpeg'], desc:'A supportive high-back ergonomic chair suited to office work, home workstations and longer study sessions. Its tall back profile is designed to provide a comfortable seated position during focused computer or desk use. The professional dark styling makes it suitable for executive rooms, staff workstations and dedicated study areas.', chair:true },
+      chair038: { name:'Brown Leather Executive Chair', code:'A.F-038', price:'Price', image:'assets/images/chairs/chair-source-21.jpeg', gallery:['assets/images/chairs/chair-source-21.jpeg','assets/images/chairs/chair-source-27.jpeg'], desc:'A classic brown executive chair designed for comfortable office seating, reading and extended desk work. The cushioned high-back profile offers a premium seating feel while the rich brown finish gives professional spaces a refined appearance. A suitable choice for executive cabins, manager desks, home offices and focused study environments.', chair:true },
+      chair039: { name:'Black Mesh Visitor Chair', code:'A.F-039', price:'Price', image:'assets/images/chairs/chair-source-22.jpeg', gallery:['assets/images/chairs/chair-source-22.jpeg'], desc:'A practical black mesh chair ideal for office visitors, meeting rooms, study tables and shared workspaces. The breathable back and straightforward seating design make it useful for everyday sitting without adding unnecessary visual bulk. It works well for guest seating, conference areas, student study setups and compact office environments.', chair:true },
+
     };
     const params = new URLSearchParams(location.search);
     const id = params.get("id") || "bed";
@@ -193,27 +214,24 @@
     const detailBack = document.getElementById("detailBack");
     if (p.office) detailBack.href = "office-furniture.html";
     if (p.living) detailBack.href = "living-room-furniture.html";
-    if (p.living) {
-      const specs = document.querySelector(".detail-specs");
-      if (specs) {
-        specs.style.display = "block";
-        const finishEl = document.getElementById("finish");
-        const customEl = document.getElementById("custom");
-        if (finishEl?.parentElement) finishEl.parentElement.style.display = "none";
-        if (customEl?.parentElement) customEl.parentElement.style.display = "none";
-        const sizeEl = document.getElementById("size");
-        if (sizeEl) sizeEl.textContent = p.size || "Custom size available";
-      }
-      const highlights = document.querySelector(".detail-highlights");
+    if (p.chair) detailBack.href = "chairs.html";
+
+    const specs = document.querySelector(".detail-specs");
+    const highlights = document.querySelector(".detail-highlights");
+    const finishEl = document.getElementById("finish");
+    const sizeEl = document.getElementById("size");
+    const customEl = document.getElementById("custom");
+    if (p.chair) {
+      if (specs) specs.style.display = "none";
       if (highlights) highlights.style.display = "none";
     } else {
-      const finishEl = document.getElementById("finish");
-      const sizeEl = document.getElementById("size");
-      const customEl = document.getElementById("custom");
+      if (specs) specs.style.display = "block";
+      if (highlights) highlights.style.display = "flex";
       if (finishEl) finishEl.textContent = p.finish || "Custom Finish Available";
       if (sizeEl) sizeEl.textContent = p.size || "Custom size available";
       if (customEl) customEl.textContent = p.custom || "Available";
     }
+
     const detailBuyNow = document.getElementById("detailBuyNow");
     const hasPrice = /^PKR\s/.test(p.price);
     if (hasPrice) {
@@ -221,7 +239,7 @@
       detailBuyNow.href = "checkout.html?id=" + encodeURIComponent(id);
       detailBuyNow.removeAttribute("target");
       detailBuyNow.removeAttribute("rel");
-    } else if (p.office || p.living) {
+    } else if (p.office || p.living || p.chair) {
       detailBuyNow.textContent = "Price";
       detailBuyNow.href = "#";
       detailBuyNow.removeAttribute("target");
@@ -229,12 +247,70 @@
     } else {
       detailBuyNow.href = "checkout.html?id=" + encodeURIComponent(id);
     }
+
     const detailImage = document.getElementById("detailImage");
     const detailImageImg = document.getElementById("detailImageImg");
-    if (detailImageImg) {
-      detailImageImg.src = p.image.startsWith("assets/") ? p.image : "assets/" + p.image;
-      detailImageImg.alt = p.name;
-      detailImageImg.onerror = function(){ this.style.display = "none"; detailImage.style.backgroundImage = "linear-gradient(135deg,#e5d5bd,#765337)"; };
+    const gallery = document.getElementById("detailGallery");
+    const sliderNav = document.getElementById("chairSliderNav");
+    const sliderMeta = document.getElementById("chairSliderMeta");
+    const sliderDots = document.getElementById("chairSliderDots");
+    const sliderCount = document.getElementById("chairSliderCount");
+    const chairPrev = document.getElementById("chairPrev");
+    const chairNext = document.getElementById("chairNext");
+
+    function showImage(src, alt) {
+      detailImageImg.style.display = "block";
+      detailImageImg.src = src.startsWith("assets/") ? src : "assets/" + src;
+      detailImageImg.alt = alt || p.name;
+    }
+    showImage(p.image, p.name);
+    detailImageImg.onerror = function(){ this.style.display = "none"; detailImage.style.backgroundImage = "linear-gradient(135deg,#e5d5bd,#765337)"; };
+
+    if (p.chair) {
+      if (gallery) gallery.style.display = "none";
+      const slides = (p.gallery && p.gallery.length ? p.gallery : [p.image]);
+      let slideIndex = 0;
+      const updateChairSlide = function(index){
+        slideIndex = (index + slides.length) % slides.length;
+        showImage(slides[slideIndex], p.name + " view " + (slideIndex + 1));
+        if (sliderCount) sliderCount.textContent = (slideIndex + 1) + " / " + slides.length;
+        if (sliderDots) sliderDots.querySelectorAll("button").forEach(function(dot,i){ dot.classList.toggle("active", i === slideIndex); });
+      };
+      if (sliderDots) {
+        sliderDots.innerHTML = "";
+        slides.forEach(function(_,i){
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.setAttribute("aria-label", "View chair image " + (i+1));
+          dot.addEventListener("click", function(){ updateChairSlide(i); });
+          sliderDots.appendChild(dot);
+        });
+      }
+      if (slides.length > 1) {
+        if (sliderNav) sliderNav.style.display = "block";
+        if (sliderMeta) sliderMeta.style.display = "flex";
+        if (chairPrev) chairPrev.addEventListener("click", function(){ updateChairSlide(slideIndex - 1); });
+        if (chairNext) chairNext.addEventListener("click", function(){ updateChairSlide(slideIndex + 1); });
+      } else {
+        if (sliderMeta) sliderMeta.style.display = "flex";
+      }
+      updateChairSlide(0);
+    } else if (p.gallery && p.gallery.length && gallery) {
+      gallery.style.display = "flex";
+      p.gallery.forEach(function(src, index){
+        const btn=document.createElement("button");
+        btn.type="button";
+        if(index===0) btn.classList.add("active");
+        const img=document.createElement("img");
+        img.src=src; img.alt=p.name + " view " + (index+1);
+        btn.appendChild(img);
+        btn.addEventListener("click",function(){
+          showImage(src, p.name + " view " + (index+1));
+          gallery.querySelectorAll("button").forEach(function(b){b.classList.remove("active")});
+          btn.classList.add("active");
+        });
+        gallery.appendChild(btn);
+      });
     }
   </script>
   <script src="assets/js/script.js"></script>
