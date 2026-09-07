@@ -179,6 +179,7 @@
       office017: { name:'Modern Office Rage Side', code:'A.F-017', price:'PKR 32,000', image:'assets/images/office-13.jpg', desc:'A modern office range-side workstation designed for spacious professional work areas and organized daily use. The sturdy metal frame provides dependable support, while the laminated top creates a durable surface for work and meetings. Its larger proportions make it suitable for executive and managerial office settings.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
       office018: { name:'Manager Office Desk', code:'A.F-018', price:'PKR 40,000', image:'assets/images/office-14.jpg', desc:'A professional manager-style office desk designed for executive rooms where workspace and presentation both matter. The strong metal frame supports a durable laminated top for computers, documents and meetings. Its broad proportions and clean finish create a confident, practical look for modern offices.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
       office019: { name:'Office Rage Side', code:'A.F-019', price:'PKR 32,000', image:'assets/images/office-15.jpg', desc:'A spacious office range-side workstation designed for professional offices, management areas and meeting-friendly setups. Its sturdy metal frame provides strength and stability, while the laminated top offers a durable surface for everyday work. The larger size gives users comfortable room for equipment, paperwork and meetings.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true },
+      office040: { name:'Modern Executive Office Desk', code:'A.F-040', price:'PKR 27,000', image:'assets/images/office-16.jpg', gallery:['assets/images/office-16.jpg','assets/images/office-16-detail.jpg'], desc:'A modern executive office desk designed for professional workspaces with a clean, premium appearance and practical storage. The spacious work surface and strong construction make it suitable for executive offices, management rooms and home office setups.', material:'Patex lamination wood, 20-gauge metal frame with powder coating color', finish:'Custom colors and finishes available', size:'Height: 30 in × Length: 60 in × Depth: 30 in', custom:'Available', office:true, officeSlider:true },
       living020: { name:'Black Rectangular Coffee Table', code:'A.F-020', price:'PKR 16,000', image:'assets/images/living-01.jpg', desc:'A modern rectangular coffee table designed for a clean and practical living room setup. It features a sturdy metal frame with a durable laminated top for everyday use. The simple black finish gives it a contemporary look while keeping the design easy to style with different interiors.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
       living021: { name:'Console Table', code:'A.F-021', price:'PKR 8,000', image:'assets/images/living-02.jpg', desc:'A compact console table made for entryways, living rooms and small display areas. The design combines a strong metal frame with a laminated top and lower shelf for useful storage. Its slim proportions make it practical without taking up unnecessary space.', size:'Height: 36 in × Length: 24 in × Depth: 12 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
       living022: { name:'Round Side Table with Black Metal Frame', code:'A.F-022', price:'Price', image:'assets/images/living-02.jpg', desc:'A versatile round side table with a modern silhouette suited to sofas, lounge chairs and compact living spaces. It is built with a metal frame and a laminated top for a balanced combination of strength and easy maintenance. The clean profile gives the table a neat contemporary appearance.', size:'Height: 30 in × Length: 48 in × Depth: 24 in', finish:'Custom colors and finishes available', custom:'Available', living:true },
@@ -301,6 +302,35 @@
         if (sliderMeta) sliderMeta.style.display = "flex";
       }
       updateChairSlide(0);
+    } else if (p.officeSlider) {
+      if (gallery) gallery.style.display = "none";
+      const slides = (p.gallery && p.gallery.length ? p.gallery : [p.image]);
+      let slideIndex = 0;
+      const updateOfficeSlide = function(index){
+        slideIndex = (index + slides.length) % slides.length;
+        showImage(slides[slideIndex], p.name + " view " + (slideIndex + 1));
+        if (sliderCount) sliderCount.textContent = (slideIndex + 1) + " / " + slides.length;
+        if (sliderDots) sliderDots.querySelectorAll("button").forEach(function(dot,i){ dot.classList.toggle("active", i === slideIndex); });
+      };
+      if (sliderDots) {
+        sliderDots.innerHTML = "";
+        slides.forEach(function(_,i){
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.setAttribute("aria-label", "View product image " + (i+1));
+          dot.addEventListener("click", function(){ updateOfficeSlide(i); });
+          sliderDots.appendChild(dot);
+        });
+      }
+      if (slides.length > 1) {
+        if (sliderNav) sliderNav.style.display = "block";
+        if (sliderMeta) sliderMeta.style.display = "flex";
+        if (chairPrev) chairPrev.addEventListener("click", function(){ updateOfficeSlide(slideIndex - 1); });
+        if (chairNext) chairNext.addEventListener("click", function(){ updateOfficeSlide(slideIndex + 1); });
+      } else {
+        if (sliderMeta) sliderMeta.style.display = "flex";
+      }
+      updateOfficeSlide(0);
     } else if (p.gallery && p.gallery.length && gallery) {
       gallery.style.display = "flex";
       p.gallery.forEach(function(src, index){

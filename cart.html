@@ -17,7 +17,7 @@
 <script>
 (function(){
  const list=document.getElementById('cartList'),actions=document.getElementById('cartActions');
- const prices={bed:45000,sofa:85000,dining:65000,wardrobe:55000};
+ const prices={bed:45000,sofa:85000,dining:65000,wardrobe:55000,office040:27000};
  const images={bed:'assets/images/bed.jpg',sofa:'https://i5.walmartimages.com/seo/4-Piece-Wenona-Series-Living-Room-Set-with-a-Modern-Gray-Velvet-Coffee-Table_97ea19af-71c6-4c53-9ed3-233e4931420a.f574bdb97db5f282c8344b182f789af2.jpeg?odnBg=FFFFFF&odnHeight=640&odnWidth=640',dining:'assets/images/hero-sofa.jpg',wardrobe:'assets/images/wardrobe.jpg'};
  function get(){try{return JSON.parse(localStorage.getItem('A.F_CART')||'[]')}catch(e){return []}}
  function save(v){localStorage.setItem('A.F_CART',JSON.stringify(v));render()}
